@@ -22,250 +22,255 @@
         <!--android:layout_gravity="center_horizontal|bottom" />-->
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/info"
-        android:layout_below="@+id/mainmenu"
-        android:visibility="invisible">
-        <TextView
-            android:id="@+id/cameraParams_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="[?]"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/OutputFileLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@id/cameraParams_text"
-            android:layout_below="@id/cameraParams_text"
-            android:text="@string/outputFileLabel_text" />
-
-        <TextView
-            android:id="@+id/OutputFile_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/OutputFileLabel"
-            android:layout_alignBottom="@id/OutputFileLabel"
-            android:layout_toRightOf="@id/OutputFileLabel"
-            android:paddingLeft="4dp"
-            android:text="@string/outputFile_text" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:id="@+id/adjustment"
-        android:visibility="gone"
-        android:layout_toLeftOf="@+id/menu">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/adjustValue"
-            android:gravity="center"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true">
+            android:id="@+id/info"
+            android:layout_below="@+id/mainmenu"
+            android:visibility="invisible">
+            <TextView
+                android:id="@+id/cameraParams_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[?]"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/text_brightness"
-                android:layout_width="50dp"
+                android:id="@+id/OutputFileLabel"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/seekbar_brightness"
-                android:textSize="16sp"
-                android:layout_alignParentTop="true"
-                android:background="@color/colorAccent"
-                android:textColor="@color/colorBg"
-                android:visibility="gone" />
+                android:layout_alignLeft="@id/cameraParams_text"
+                android:layout_below="@id/cameraParams_text"
+                android:text="@string/outputFileLabel_text" />
 
             <TextView
-                android:id="@+id/text_contrast"
-                android:layout_width="50dp"
+                android:id="@+id/OutputFile_text"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="@string/seekbar_contrast"
-                android:textSize="16sp"
-                android:visibility="gone"
-                android:background="@color/colorAccent"
-                android:textColor="@color/colorBg" />
+                android:layout_alignBaseline="@id/OutputFileLabel"
+                android:layout_alignBottom="@id/OutputFileLabel"
+                android:layout_toRightOf="@id/OutputFileLabel"
+                android:paddingLeft="4dp"
+                android:text="@string/outputFile_text" />
 
-            <TextView
-                android:id="@+id/text_saturation"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="@string/seekbar_saturation"
-                android:textSize="16sp"
-                android:visibility="gone"
-                android:background="@color/colorAccent"
-                android:textColor="@color/colorBg" />
-
-            <TextView
-                android:id="@+id/text_corner_radius"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="@string/seekbar_corner_radius"
-                android:textSize="16sp"
-                android:visibility="gone"
-                android:background="@color/colorAccent"
-                android:textColor="@color/colorBg" />
         </RelativeLayout>
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/scrollView"
-            android:layout_below="@+id/adjustValue"
-            android:layout_centerInParent="true">
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:id="@+id/adjustment"
+            android:visibility="gone"
+            android:layout_toLeftOf="@+id/menu">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:id="@+id/adjustValue"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true">
 
-                <ImageButton
+                <TextView
+                    android:id="@+id/text_brightness"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/brightnessButton"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/ic_brightness"
-                    android:scaleType="fitCenter"
-                    android:background="@color/colorTrans"
-                    android:padding="5dp" />
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/seekbar_brightness"
+                    android:textSize="16sp"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg"
+                    android:visibility="gone" />
 
-                <ImageButton
+                <TextView
+                    android:id="@+id/text_contrast"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/contrastButton"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/ic_contrast"
-                    android:scaleType="fitCenter"
-                    android:layout_below="@+id/brightnessButton"
-                    android:background="@color/colorTrans"
-                    android:padding="5dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/seekbar_contrast"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg" />
 
-                <ImageButton
+                <TextView
+                    android:id="@+id/text_saturation"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/saturationButton"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/ic_saturation"
-                    android:scaleType="fitCenter"
-                    android:layout_below="@+id/contrastButton"
-                    android:background="@color/colorTrans"
-                    android:padding="5dp" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/seekbar_saturation"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg" />
 
-                <ImageButton
+                <TextView
+                    android:id="@+id/text_corner_radius"
                     android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/vinyetButton"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/ic_vinyet"
-                    android:scaleType="fitCenter"
-                    android:layout_below="@+id/saturationButton"
-                    android:background="@color/colorTrans"
-                    android:padding="5dp" />
-
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/seekbar_corner_radius"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg" />
             </RelativeLayout>
-        </ScrollView>
 
-    </RelativeLayout>
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/scrollView"
+                android:layout_below="@+id/adjustValue"
+                android:layout_centerInParent="true">
 
-    <RelativeLayout
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/adjustSeekBar"
-        android:rotation="90"
-        android:gravity="center"
-        android:visibility="gone"
-        android:padding="20dp"
-        android:layout_toLeftOf="@+id/adjustment">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
 
-        <SeekBar
-            android:id="@+id/seekBarBrightness"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressDrawable="@drawable/progress_cyan"
-            android:thumb="@drawable/thumbler_small"
-            android:max="10"
-            android:padding="10dp"
-            android:visibility="gone" />
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/brightnessButton"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_brightness"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans"
+                        android:padding="5dp" />
 
-        <SeekBar
-            android:id="@+id/seekBarContrast"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressDrawable="@drawable/progress_cyan"
-            android:thumb="@drawable/thumbler_small"
-            android:max="10"
-            android:padding="10dp"
-            android:visibility="gone" />
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/contrastButton"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_contrast"
+                        android:scaleType="fitCenter"
+                        android:layout_below="@+id/brightnessButton"
+                        android:background="@color/colorTrans"
+                        android:padding="5dp" />
 
-        <SeekBar
-            android:id="@+id/seekBarSaturation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressDrawable="@drawable/progress_cyan"
-            android:thumb="@drawable/thumbler_small"
-            android:max="10"
-            android:padding="10dp"
-            android:visibility="gone" />
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/saturationButton"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_saturation"
+                        android:scaleType="fitCenter"
+                        android:layout_below="@+id/contrastButton"
+                        android:background="@color/colorTrans"
+                        android:padding="5dp" />
 
-        <SeekBar
-            android:id="@+id/seekBarVinyet"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:progressDrawable="@drawable/progress_cyan"
-            android:thumb="@drawable/thumbler_small"
-            android:max="10"
-            android:padding="10dp"
-            android:visibility="gone" />
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/vinyetButton"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@mipmap/ic_vinyet"
+                        android:scaleType="fitCenter"
+                        android:layout_below="@+id/saturationButton"
+                        android:background="@color/colorTrans"
+                        android:padding="5dp" />
 
-    </RelativeLayout>
+                </RelativeLayout>
+            </ScrollView>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menu"
-        android:gravity="center"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true">
+        </RelativeLayout>
 
-        <Spinner
-            android:id="@+id/cameraFilter_spinner"
-            android:layout_width="100dp"
+        <RelativeLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/adjustSeekBar"
+            android:rotation="90"
+            android:gravity="center"
+            android:visibility="gone"
+            android:padding="20dp"
+            android:layout_toLeftOf="@+id/adjustment">
+
+            <SeekBar
+                android:id="@+id/seekBarBrightness"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressDrawable="@drawable/progress_cyan"
+                android:thumb="@drawable/thumbler_small"
+                android:max="10"
+                android:padding="10dp"
+                android:visibility="gone" />
+
+            <SeekBar
+                android:id="@+id/seekBarContrast"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressDrawable="@drawable/progress_cyan"
+                android:thumb="@drawable/thumbler_small"
+                android:max="10"
+                android:padding="10dp"
+                android:visibility="gone" />
+
+            <SeekBar
+                android:id="@+id/seekBarSaturation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressDrawable="@drawable/progress_cyan"
+                android:thumb="@drawable/thumbler_small"
+                android:max="10"
+                android:padding="10dp"
+                android:visibility="gone" />
+
+            <SeekBar
+                android:id="@+id/seekBarVinyet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressDrawable="@drawable/progress_cyan"
+                android:thumb="@drawable/thumbler_small"
+                android:max="10"
+                android:padding="10dp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/menu"
+            android:gravity="center"
             android:layout_alignParentRight="true"
-            android:visibility="gone" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true">
 
-        <ImageButton
-            android:id="@+id/button_menu"
-            android:src="@mipmap/id_adjustment"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:onClick="clickAdjustmentMenu"
-            android:background="@color/colorTrans" />
+            <Spinner
+                android:id="@+id/cameraFilter_spinner"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:visibility="gone" />
 
-        <ImageButton
-            android:id="@+id/toggleRecording_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:onClick="clickToggleRecording"
-            android:text="@string/toggleRecordingOn"
-            android:src="@mipmap/ic_rec"
-            android:background="@color/colorTrans" />
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/button_menu"
+                android:src="@mipmap/id_adjustment"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:onClick="clickAdjustmentMenu"
+                android:background="@color/colorTrans" />
+
+            <ImageButton
+                android:id="@+id/toggleRecording_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="clickToggleRecording"
+                android:text="@string/toggleRecordingOn"
+                android:src="@mipmap/ic_rec"
+                android:background="@color/colorTrans" />
+        </LinearLayout>
+    </RelativeLayout>
 
 </FrameLayout>
