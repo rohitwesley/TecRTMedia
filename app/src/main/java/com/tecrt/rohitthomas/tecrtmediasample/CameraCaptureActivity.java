@@ -34,12 +34,24 @@ public class CameraCaptureActivity extends AppCompatActivity implements SurfaceT
     // this is static so it survives activity restarts
     private static TextureMovieEncoder sVideoEncoder = new TextureMovieEncoder();
 
+    //Folder and File to put recorded data
+    private File mVideoFolder;
+    private File mVideoFile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_capture);
 
-        File outputFile = new File(Environment.getExternalStorageDirectory(), "stream.mp4");
+        // TODO go to video recorder app on finish recording and send shared data
+        try {
+            //Get Gallery Folder or create it if doesnt exist
+            mVideoFolder = MiscUtils.createVideoFolder("Splode");
+            mVideoFile = MiscUtils.createVideoFileName(mVideoFolder,"camera-test", ".mp4");//new File(getFilesDir(), "camera-test.mp4");//new File(Environment.getExternalStorageDirectory(), "stream.mp4");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //File mVideoFile = new File(Environment.getExternalStorageDirectory(), "stream.mp4");
 
 
         // Define a handler that receives camera-control messages from other threads.  All calls
@@ -53,7 +65,7 @@ public class CameraCaptureActivity extends AppCompatActivity implements SurfaceT
         // appropriate EGL context.
         mGLView = (GLSurfaceView) findViewById(R.id.cameraPreview_surfaceView);
         mGLView.setEGLContextClientVersion(2);     // select GLES 2.0
-        mRenderer = new CameraSurfaceRenderer(mCameraHandler, sVideoEncoder, outputFile);
+        mRenderer = new CameraSurfaceRenderer(mCameraHandler, sVideoEncoder, mVideoFile);
         mGLView.setRenderer(mRenderer);
         mGLView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
 
@@ -70,9 +82,6 @@ public class CameraCaptureActivity extends AppCompatActivity implements SurfaceT
             openCamera(1920, 1080);
         }
 
-
-
-
         mGLView.queueEvent(new Runnable() {
             @Override
             public void run() {
@@ -81,9 +90,6 @@ public class CameraCaptureActivity extends AppCompatActivity implements SurfaceT
         });
 
         mGLView.onResume();
-
-
-
 
         //
 
@@ -120,7 +126,6 @@ public class CameraCaptureActivity extends AppCompatActivity implements SurfaceT
         super.onDestroy();
         mCameraHandler.invalidateHandler();     // paranoia
     }
-
 
     private void openCamera(int desiredWidth, int desiredHeight) {
         if (mCamera != null) {
