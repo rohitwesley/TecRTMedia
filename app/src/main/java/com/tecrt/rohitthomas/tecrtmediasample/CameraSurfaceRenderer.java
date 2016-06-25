@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.tecrt.rohitthomas.tecrtmediasample.gles.FullFrameRect;
 import com.tecrt.rohitthomas.tecrtmediasample.gles.Texture2dProgram;
+import com.tecrt.rohitthomas.tecrtmediasample.video.TextureMovieEncoder;
 
 import java.io.File;
 
