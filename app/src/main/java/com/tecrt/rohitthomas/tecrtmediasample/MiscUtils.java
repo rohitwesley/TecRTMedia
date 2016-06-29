@@ -2,6 +2,9 @@ package com.tecrt.rohitthomas.tecrtmediasample;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
 import android.view.Display;
@@ -120,5 +123,21 @@ public class MiscUtils {
 
         return videoFile;//videoFile;
     }
+
+    public static void BroadcastGallery(File out, Context view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Intent mediaScanIntent = new Intent(
+                    Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+            Uri contentUri = Uri.fromFile(out); //out is your file you saved/deleted/moved/copied
+            mediaScanIntent.setData(contentUri);
+            view.sendBroadcast(mediaScanIntent);
+        } else {
+            view.sendBroadcast(new Intent(
+                    Intent.ACTION_MEDIA_MOUNTED,
+                    Uri.parse("file://"
+                            + Environment.getExternalStorageDirectory())));
+        }
+    }
+
 
 }

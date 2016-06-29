@@ -1,4 +1,4 @@
-package com.tecrt.rohitthomas.tecrtmediasample.video;
+package com.tecrt.rohitthomas.tecrtmediasample;
 
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
