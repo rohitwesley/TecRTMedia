@@ -288,7 +288,7 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
         public void onClick(final View v) {
             switch(v.getId()) {
                 case R.id.button_menu:
-                    if(toggleMenu) {
+                    if(toggleMenu) {//TODO Reduse number of clicks to open GLview
                         hideUIElement(Techniques.FadeOutUp, 700, findViewById(R.id.layout_menu));
                         //hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
                         //hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
@@ -301,9 +301,6 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
                     }
                     else {
                         showUIElement(Techniques.FadeInDown, 700, findViewById(R.id.layout_menu));
-                        if(!toggleMode) {
-                            StartCamera();
-                        }
                         toggleMenu = true;
                     }
                     YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.button_menu));
@@ -346,14 +343,16 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
 
                             showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuVideo));
                             hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
-                            Toast.makeText(MediaActivity.this, "Video Editor Active", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MediaActivity.this, "Video Editor", Toast.LENGTH_SHORT).show();
                         }
                         else {
+                            StartCamera();
                             //Pause on load activity to let everything load
                             showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuCamera));
                             hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
                             hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.playMovieFile_spinner));
-                            Toast.makeText(MediaActivity.this, "Camera Active", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MediaActivity.this, "Camera", Toast.LENGTH_SHORT).show();
+                            onResume();
                         }
                         toggleVideoMenu = false;
                     }
