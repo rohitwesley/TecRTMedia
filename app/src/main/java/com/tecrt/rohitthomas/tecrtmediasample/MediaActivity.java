@@ -95,6 +95,7 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
         frameLayout = (FrameLayout) findViewById(R.id.MainLayout);
 
         // Set Vew Button OnClickListeners.
+        findViewById(R.id.button_camera_video).setOnClickListener(mView_OnClickListener);
         findViewById(R.id.button_camrotate).setOnClickListener(mView_OnClickListener);
         findViewById(R.id.button_stop_rec).setOnClickListener(mView_OnClickListener);
         findViewById(R.id.button_add).setOnClickListener(mView_OnClickListener);
@@ -270,7 +271,7 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
     boolean toggleMenu = false;
     boolean toggleAdjustment = false;
     boolean toggleFilters = false;
-//    boolean toggleVideoMenu = true;
+    boolean toggleVideoMenu = true;
     boolean toggleMode = true;
     boolean toggleRec = true;
     boolean togglePlay = false;
@@ -299,24 +300,14 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
                         hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
                     }
                     else {
-                        if(toggleMode) {
-                            StartVideo();
-                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuVideo));
-                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
-                            Toast.makeText(MediaActivity.this, "Video Editor Active", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            StartCamera();
-                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuCamera));
-                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
-                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.playMovieFile_spinner));
-                            Toast.makeText(MediaActivity.this, "Camera Active", Toast.LENGTH_SHORT).show();
-                        }
                         showUIElement(Techniques.FadeInDown, 700, findViewById(R.id.layout_menu));
+                        if(!toggleMode) {
+                            StartCamera();
+                        }
                         toggleMenu = true;
                     }
                     YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.button_menu));
-//                    toggleVideoMenu = false;
+                    toggleVideoMenu = false;
                     break;
             }
         }
@@ -332,33 +323,48 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
             switch(v.getId()) {
 
                 //View Buttons
-//                case R.id.button_camera_video://Replased with master button
-//                    toggleButton = (ImageButton) findViewById(R.id.button_camera_video);
-//                    if(toggleVideoMenu) {
-//                        //toggleButton.setImageResource(R.mipmap.ic_rec);
-//                        if(toggleMode) {
-//                            StartVideo();
-//                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuVideo));
-//                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
-//                            Toast.makeText(MediaActivity.this, "Video Editor Active", Toast.LENGTH_SHORT).show();
-//                        }
-//                        else {
-//                            StartCamera();
-//                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuCamera));
-//                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
-//                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.playMovieFile_spinner));
-//                            Toast.makeText(MediaActivity.this, "Camera Active", Toast.LENGTH_SHORT).show();
-//                        }
-//                        toggleVideoMenu = false;
-//                    }
-//                    else {
-//                        //toggleButton.setImageResource(R.mipmap.ic_rec);
-//                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
-//                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
-//                        toggleVideoMenu = true;
-//                    }
-//                    YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.button_camera_video));
-//                    break;
+                case R.id.button_camera_video://Replased with master button
+                    toggleButton = (ImageButton) findViewById(R.id.button_camera_video);
+                    if(toggleVideoMenu) {
+                        //toggleButton.setImageResource(R.mipmap.ic_rec);
+                        if(toggleMode) {//TODO use a better way to refresh glview on start
+                            StartVideo();
+                            new CountDownTimer(500, 100) {
+
+                                public void onTick(long millisUntilFinished) {
+                                    // You don't need anything here
+                                }
+
+                                public void onFinish() {
+                                    StopVideo();
+                                }
+
+                            }.start();
+                            toggleButton = (ImageButton) findViewById(R.id.button_play_pause);
+                            toggleButton.setImageResource(R.mipmap.ic_pause);
+                            togglePlay = false;
+
+                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuVideo));
+                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
+                            Toast.makeText(MediaActivity.this, "Video Editor Active", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            //Pause on load activity to let everything load
+                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuCamera));
+                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
+                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.playMovieFile_spinner));
+                            Toast.makeText(MediaActivity.this, "Camera Active", Toast.LENGTH_SHORT).show();
+                        }
+                        toggleVideoMenu = false;
+                    }
+                    else {
+                        //toggleButton.setImageResource(R.mipmap.ic_rec);
+                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
+                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
+                        toggleVideoMenu = true;
+                    }
+                    YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.button_camera_video));
+                    break;
                 //Camera Buttons
                 case R.id.button_camrotate:
                     Toast.makeText(MediaActivity.this, "Camera Changed", Toast.LENGTH_SHORT).show();
@@ -825,7 +831,9 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
     public void StopCamera() {
         if(mCameraView != null) {
 //            hideUIElement(Techniques.FadeOut, 700, mCameraView);
-            frameLayout.removeView(mCameraView);
+//            frameLayout.removeView(mCameraView);
+            mCameraView.onPause();
+//            frameLayout.removeView(mVideoView);
         }
     }
     /**

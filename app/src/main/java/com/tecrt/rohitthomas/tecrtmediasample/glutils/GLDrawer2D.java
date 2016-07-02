@@ -228,9 +228,9 @@ public class GLDrawer2D {
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_STRIP, 0, VERTEX_NUM);
         GLES20.glBindTexture(GLES11Ext.GL_TEXTURE_EXTERNAL_OES, 0);
 
-        GLES20.glUseProgram(0);
+//        GLES20.glUseProgram(0);
 //        GLES20.glFinish();
-        GLES20.glFlush();
+//        GLES20.glFlush();
     }
 
     /**

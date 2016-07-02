@@ -72,6 +72,13 @@
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/button_camera_video"
+                android:src="@android:drawable/ic_menu_camera"
+                android:background="@color/colorTrans" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:id="@+id/button_adjust"
                 android:src="@mipmap/id_adjustment"
                 android:background="@color/colorTrans" />
