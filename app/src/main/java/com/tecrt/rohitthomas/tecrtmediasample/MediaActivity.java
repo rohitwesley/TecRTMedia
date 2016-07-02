@@ -75,7 +75,7 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
     // Application shared preferences instance.
     private SharedPreferences mPreferences;
     // Shared data instance.
-    private final tecrtData mSharedData = new tecrtData();
+    private tecrtData mSharedData = new tecrtData();
 
     File mVideoFolder;
     File mVideoFile;
@@ -95,7 +95,6 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
         frameLayout = (FrameLayout) findViewById(R.id.MainLayout);
 
         // Set Vew Button OnClickListeners.
-        findViewById(R.id.button_camera_video).setOnClickListener(mView_OnClickListener);
         findViewById(R.id.button_camrotate).setOnClickListener(mView_OnClickListener);
         findViewById(R.id.button_stop_rec).setOnClickListener(mView_OnClickListener);
         findViewById(R.id.button_add).setOnClickListener(mView_OnClickListener);
@@ -123,8 +122,8 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
         findViewById(R.id.filter_Georgia).setOnClickListener(mFilters_OnClickListener);
         findViewById(R.id.filter_Sahara).setOnClickListener(mFilters_OnClickListener);
         findViewById(R.id.filter_Polaroid).setOnClickListener(mFilters_OnClickListener);
-//        findViewById(R.id.filter_Edges).setOnClickListener(mObserverButton);
-//        findViewById(R.id.filter_Cartoon).setOnClickListener(mObserverButton);
+        findViewById(R.id.filter_Edges).setOnClickListener(mFilters_OnClickListener);
+        findViewById(R.id.filter_Cartoon).setOnClickListener(mFilters_OnClickListener);
 
         // SeekBar ids as triples { SeekBar id, key id, default value }.
         final int SEEKBAR_IDS[][] = {
@@ -191,7 +190,7 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
             }
 
             public void onFinish() {
-                findViewById(R.id.layout_menu).setVisibility(View.VISIBLE);
+                findViewById(R.id.layout_menu).setVisibility(View.GONE);
                 findViewById(R.id.layout_menuCamera).setVisibility(View.GONE);
                 findViewById(R.id.layout_menuVideo).setVisibility(View.GONE);
                 findViewById(R.id.layout_filters).setVisibility(View.GONE);
@@ -239,7 +238,6 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
         stopRecording();
     }
 
-
     /*
      * Called when the movie Spinner gets touched.
      */
@@ -272,9 +270,9 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
     boolean toggleMenu = false;
     boolean toggleAdjustment = false;
     boolean toggleFilters = false;
-    boolean toggleVideoMenu = true;
-    boolean toggleMode = true;//TODO make different activities for camera and video
-    boolean toggleRec = false;
+//    boolean toggleVideoMenu = true;
+    boolean toggleMode = true;
+    boolean toggleRec = true;
     boolean togglePlay = false;
     // Check if video changed
     boolean VideoUpdate = false;
@@ -296,11 +294,29 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
                         hideUIElement(Techniques.FadeOutLeft, 700, findViewById(R.id.layout_filters));
                         hideUIElement(Techniques.FadeOutDown, 700, findViewById(R.id.layout_adjustment));
                         toggleMenu = false;
+                        //toggleButton.setImageResource(R.mipmap.ic_rec);
+                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
+                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
                     }
                     else {
+                        if(toggleMode) {
+                            StartVideo();
+                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuVideo));
+                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
+                            Toast.makeText(MediaActivity.this, "Video Editor Active", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            StartCamera();
+                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuCamera));
+                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
+                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.playMovieFile_spinner));
+                            Toast.makeText(MediaActivity.this, "Camera Active", Toast.LENGTH_SHORT).show();
+                        }
                         showUIElement(Techniques.FadeInDown, 700, findViewById(R.id.layout_menu));
                         toggleMenu = true;
                     }
+                    YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.button_menu));
+//                    toggleVideoMenu = false;
                     break;
             }
         }
@@ -316,32 +332,33 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
             switch(v.getId()) {
 
                 //View Buttons
-                case R.id.button_camera_video:
-                    toggleButton = (ImageButton) findViewById(R.id.button_camera_video);
-                    if(toggleVideoMenu) {
-                        //toggleButton.setImageResource(R.mipmap.ic_rec);
-                        if(toggleMode) {
-                            StartVideo();
-                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuVideo));
-                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
-                        }
-                        else {
-                            StartCamera();
-                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuCamera));
-                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
-                        }
-                        toggleVideoMenu = false;
-                        Toast.makeText(MediaActivity.this, "Video Editor Active", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        //toggleButton.setImageResource(R.mipmap.ic_rec);
-                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
-                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
-                        toggleVideoMenu = true;
-                        Toast.makeText(MediaActivity.this, "Camera Active", Toast.LENGTH_SHORT).show();
-                    }
-                    YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.button_camera_video));
-                    break;
+//                case R.id.button_camera_video://Replased with master button
+//                    toggleButton = (ImageButton) findViewById(R.id.button_camera_video);
+//                    if(toggleVideoMenu) {
+//                        //toggleButton.setImageResource(R.mipmap.ic_rec);
+//                        if(toggleMode) {
+//                            StartVideo();
+//                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuVideo));
+//                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
+//                            Toast.makeText(MediaActivity.this, "Video Editor Active", Toast.LENGTH_SHORT).show();
+//                        }
+//                        else {
+//                            StartCamera();
+//                            showUIElement(Techniques.FadeInRight, 700, findViewById(R.id.layout_menuCamera));
+//                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
+//                            hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.playMovieFile_spinner));
+//                            Toast.makeText(MediaActivity.this, "Camera Active", Toast.LENGTH_SHORT).show();
+//                        }
+//                        toggleVideoMenu = false;
+//                    }
+//                    else {
+//                        //toggleButton.setImageResource(R.mipmap.ic_rec);
+//                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuCamera));
+//                        hideUIElement(Techniques.FadeOutRight, 700, findViewById(R.id.layout_menuVideo));
+//                        toggleVideoMenu = true;
+//                    }
+//                    YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.button_camera_video));
+//                    break;
                 //Camera Buttons
                 case R.id.button_camrotate:
                     Toast.makeText(MediaActivity.this, "Camera Changed", Toast.LENGTH_SHORT).show();
@@ -430,7 +447,6 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
 
         public void onClick(final View v) {
             switch(v.getId()) {
-
                 //Filters Buttons
                 case R.id.button_filters:
                     if(toggleFilters) {
@@ -486,16 +502,18 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
                     mSharedData.mFilter = 7;
                     YoYo.with(Techniques.BounceIn).duration(700).playOn(findViewById(R.id.filter_Polaroid));
                     break;
-//                // Edges Filter button
-//                case R.id.filter_Edges:
-//                    mSharedData.mFilter = 8;
-//                    break;
-//                // Cartoon Filter button
-//                case R.id.filter_Cartoon:
-//                    mSharedData.mFilter = 9;
-//                    break;
+                // Cartoon Filter button
+                case R.id.filter_Cartoon:
+                    mSharedData.mFilter = 10;
+                    break;
+                // Edges Filter button
+                case R.id.filter_Edges:
+                    mSharedData.mFilter = 8;
+                    break;
 
             }
+            if (mVideoView != null)mVideoView.setSharedData(mSharedData);
+            if (mCameraView != null)mCameraView.setSharedData(mSharedData);
         }
     };
 
@@ -595,6 +613,8 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
                     YoYo.with(Techniques.RotateIn).duration(700).playOn(findViewById(R.id.vinyetButton));
                     break;
             }
+            if (mVideoView != null)mVideoView.setSharedData(mSharedData);
+            if (mCameraView != null)mCameraView.setSharedData(mSharedData);
         }
     };
 
@@ -717,7 +737,9 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
             else {
                 VideoUpdate = mVideoView.StartVideo( VideoUpdate, player);
             }
-            mVideoView.setVideoSize(1280, 720);
+            mVideoView.setSharedData(mSharedData);
+            //mVideoView.setVideoSize(1280, 720);
+            mVideoView.setVideoSize(mSharedData.videoWidth, mSharedData.videoHeight);
 //            showUIElement(Techniques.FadeIn, 700, mVideoView);
             //TODO Need to find a better way then accessing VideoGLView mediaplayer directly
             mVideoView.mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -776,8 +798,10 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
         //mCameraView = (CameraGLView) findViewById(R.id.cameraView);
         if(mCameraView == null) {
             mCameraView = new CameraGLView(MediaActivity.this);
+            mCameraView.setSharedData(mSharedData);
             frameLayout.addView(mCameraView);
-            mCameraView.setVideoSize(1280, 720);
+            //mVideoView.setVideoSize(1280, 720);
+            mCameraView.setVideoSize(mSharedData.videoWidth, mSharedData.videoHeight);
             findViewById(R.id.UILayout).bringToFront();
             mCameraView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -839,7 +863,7 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
             }
             if (true) {
                 // for audio capturing
-                if(toggleMode) {//TODO record audio from video not mic
+                if(toggleMode) {//TODO Priority: record audio from video not mic
                     new MediaAudioEncoder(mMuxer, mMediaEncoderListener);
                 }
                 else
@@ -865,7 +889,7 @@ public class MediaActivity extends AppCompatActivity implements AdapterView.OnIt
         }
         //TODO Attempt to make file viewable in gallery
         MiscUtils.BroadcastGallery(mVideoFolder, MediaActivity.this);
-        //TODO put a countdown while video changing
+        //TODO put a countdown while file saved
     }
 
     /**

@@ -39,7 +39,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button_menu"
-            android:src="@android:drawable/ic_menu_more"
+            android:src="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
             android:background="@color/colorTrans"
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="false"
@@ -50,13 +50,14 @@
             android:layout_height="wrap_content"
             android:text="New Text"
             android:id="@+id/info"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
 
         <Spinner
             android:id="@+id/playMovieFile_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:layout_below="@+id/button_menu" />
 
         <LinearLayout
@@ -67,13 +68,6 @@
             android:padding="10dp"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true">
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:id="@+id/button_camera_video"
-                android:src="@android:drawable/ic_menu_camera"
-                android:background="@color/colorTrans" />
 
             <ImageButton
                 android:layout_width="50dp"
@@ -90,13 +84,6 @@
                 android:background="@color/colorTrans" />
 
         </LinearLayout>
-
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/scrollView"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -135,28 +122,28 @@
                 android:layout_height="50dp"
                 android:id="@+id/button_saveedit"
                 android:background="@color/colorTrans"
-                android:src="@mipmap/ic_stop" />
+                android:src="@android:drawable/ic_menu_save" />
 
             <Button
                 android:id="@+id/append"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Append"
-                />
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/crop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Crop"
-                />
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/sub_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SubTitle"
-                />
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -176,7 +163,8 @@
                 android:layout_height="50dp"
                 android:id="@+id/button_camrotate"
                 android:background="@color/colorTrans"
-                android:src="@android:drawable/ic_popup_sync" />
+                android:src="@android:drawable/ic_popup_sync"
+                android:visibility="gone" />
 
             <ImageButton
                 android:layout_width="50dp"
@@ -400,7 +388,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/Cartoonfilter"
                     android:layout_toRightOf="@+id/Polaroidfilter"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/text_Cartoon"
@@ -424,7 +413,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/Edgesfilter"
                     android:layout_toRightOf="@+id/Cartoonfilter"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/text_Edges"

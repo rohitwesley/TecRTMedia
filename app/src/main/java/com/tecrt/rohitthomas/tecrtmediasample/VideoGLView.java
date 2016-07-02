@@ -289,6 +289,13 @@ public class VideoGLView extends GLSurfaceView {
         });
     }
 
+    /**
+     * Setter for shared data.
+     */
+    public void setSharedData(tecrtData sharedData) {
+        mRenderer.setSharedData(sharedData);
+    }
+
     private class VideoRender implements GLSurfaceView.Renderer,
             SurfaceTexture.OnFrameAvailableListener {
         private String TAG = "VideoRender";
@@ -343,6 +350,7 @@ public class VideoGLView extends GLSurfaceView {
         public void onSurfaceChanged(GL10 glUnused, int width, int height) {
 
             GLES20.glViewport(0, 0, width, height);
+            mDrawer.setsurfacesize(width,height);
 
         }
 
@@ -382,9 +390,6 @@ public class VideoGLView extends GLSurfaceView {
                 }
             }
 
-            GLES20.glClearColor(255.0f, 255.0f, 255.0f, 1.0f);
-            GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT | GLES20.GL_COLOR_BUFFER_BIT);
-
             // draw to preview screen
             mDrawer.draw(mTextureID, mSTMatrix);
 
@@ -419,6 +424,13 @@ public class VideoGLView extends GLSurfaceView {
                 Log.e(TAG, op + ": glError " + error);
                 throw new RuntimeException(op + ": glError " + error);
             }
+        }
+
+        /**
+         * Setter for shared data.
+         */
+        public void setSharedData(tecrtData sharedData) {
+            if(mDrawer !=null) mDrawer.setSharedData(sharedData);
         }
 
     }

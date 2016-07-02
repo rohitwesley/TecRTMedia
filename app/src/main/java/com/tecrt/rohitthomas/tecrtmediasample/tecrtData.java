@@ -9,13 +9,18 @@ public class tecrtData {
 
 //    // Preview view aspect ratio.
 //    public float mAspectRatioPreview[] = new float[2];
-//    // Video Rez.
-//    public int videoWidth;
-//    public int videoHeight;
+    // Video Rez.
+    public int videoWidth = 10;//1280;
+    public int videoHeight = 10;//720;
     // Filter values.
     public float mBrightness = 1, mContrast = 1, mSaturation = 1, mCornerRadius = 1;
     // Predefined filter.
     public int mFilter = 0;
+    //Check to launch intro
+    public boolean startIntro = true;
+    public int introsec = 5;
+    //30 sec Clock
+    public int time = 0;
 
 //
 //    // Taken picture data (jpeg).
