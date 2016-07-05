@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/MainLayout"
+    tools:context="com.tecrt.rohitthomas.tecrtmedia.MediaActivity">
+
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:id="@+id/bgimageView"
+        android:src="@drawable/bg"
+        android:scaleType="centerCrop" />
+
+    <!--<SurfaceView-->
+    <!--android:layout_width="fill_parent"-->
+    <!--android:layout_height="fill_parent"-->
+    <!--android:id="@+id/mediaGLView"-->
+    <!--android:layout_gravity="center" />-->
+
+    <!--<com.tecrt.rohitthomas.tecrtmedia.CameraGLView-->
+        <!--android:id="@+id/cameraView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerInParent="true" />-->
+
+    <!--<com.tecrt.rohitthomas.tecrtmedia.VideoGLView-->
+        <!--android:id="@+id/videoView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_centerInParent="true" />-->
+
+    <!--<android.opengl.GLSurfaceView-->
+    <!--android:id="@+id/GLView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_centerInParent="true" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/UILayout">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/button_menu"
+            android:src="@drawable/abc_ic_menu_moreoverflow_mtrl_alpha"
+            android:background="@color/colorTrans"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="false"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/info"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/playMovieFile_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_menu"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_menu"
+            android:padding="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_camera_video"
+                android:src="@android:drawable/ic_menu_camera"
+                android:visibility="invisible"
+                android:background="@color/colorTrans" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_adjust"
+                android:src="@mipmap/id_adjustment"
+                android:background="@color/colorTrans" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_filters"
+                android:src="@mipmap/ic_filters"
+                android:background="@color/colorTrans" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:id="@+id/layout_menuVideo"
+            android:padding="10dp">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_add"
+                android:background="@color/colorTrans"
+                android:src="@mipmap/ic_add" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_reset"
+                android:background="@color/colorTrans"
+                android:src="@mipmap/ic_playback" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_play_pause"
+                android:background="@color/colorTrans"
+                android:src="@mipmap/ic_play" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_saveedit"
+                android:background="@color/colorTrans"
+                android:src="@android:drawable/ic_menu_save" />
+
+            <Button
+                android:id="@+id/append"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Append"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/crop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crop"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/sub_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SubTitle"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:id="@+id/layout_menuCamera"
+            android:padding="10dp">
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_camrotate"
+                android:background="@color/colorTrans"
+                android:src="@android:drawable/ic_popup_sync"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/button_stop_rec"
+                android:background="@color/colorTrans"
+                android:src="@mipmap/ic_stop" />
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_filters"
+            android:fillViewport="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:layout_toLeftOf="@+id/layout_menuVideo"
+            android:padding="10dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/nonefilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_none"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_none"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_none"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bnwfilter"
+                    android:layout_toRightOf="@+id/nonefilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_bnw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_bnw"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_bnw"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Anselfilter"
+                    android:layout_toRightOf="@+id/bnwfilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_Ansel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Ansel"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Ansel"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Sepiafilter"
+                    android:layout_toRightOf="@+id/Anselfilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_Sepia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Sepia"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Sepia"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Retrofilter"
+                    android:layout_toRightOf="@+id/Sepiafilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_Retro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Retro"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Retro"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Georgiafilter"
+                    android:layout_toRightOf="@+id/Retrofilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_Georgia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Georgia"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Georgia"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Saharafilter"
+                    android:layout_toRightOf="@+id/Georgiafilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_Sahara"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Sahara"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Sahara"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Polaroidfilter"
+                    android:layout_toRightOf="@+id/Saharafilter"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/text_Polaroid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Polaroid"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Polaroid"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Cartoonfilter"
+                    android:layout_toRightOf="@+id/Polaroidfilter"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/text_Cartoon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Cartoon"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Cartoon"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/Edgesfilter"
+                    android:layout_toRightOf="@+id/Cartoonfilter"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/text_Edges"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/filter_Edges"
+                        android:textSize="12sp"/>
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/filter_Edges"
+                        android:src="@mipmap/ic_launcher"
+                        android:scaleType="fitCenter"
+                        android:background="@color/colorTrans" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/layout_adjustment"
+            android:padding="10dp"
+            android:layout_centerInParent="true">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_adjustValue"
+                android:gravity="center"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:id="@+id/text_brightness"
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:gravity="center"
+                    android:text="@string/seekbar_brightness"
+                    android:textSize="20sp"
+                    android:layout_alignParentTop="true"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg" />
+
+                <TextView
+                    android:id="@+id/text_contrast"
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/seekbar_contrast"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg" />
+
+                <TextView
+                    android:id="@+id/text_saturation"
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/seekbar_saturation"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg" />
+
+                <TextView
+                    android:id="@+id/text_vinyet"
+                    android:layout_width="80dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="@string/seekbar_corner_radius"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorBg" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout_adjustSeekBar"
+                android:gravity="center"
+                android:rotation="0"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <SeekBar
+                    android:id="@+id/seekBarBrightness"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:progressDrawable="@drawable/progress_cyan"
+                    android:max="10"
+                    android:thumb="@drawable/thumbler_small"
+                    android:layout_centerInParent="true" />
+
+                <SeekBar
+                    android:id="@+id/seekBarContrast"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:progressDrawable="@drawable/progress_cyan"
+                    android:max="10"
+                    android:thumb="@drawable/thumbler_small"
+                    android:layout_centerInParent="true" />
+
+                <SeekBar
+                    android:id="@+id/seekBarSaturation"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:progressDrawable="@drawable/progress_cyan"
+                    android:max="10"
+                    android:thumb="@drawable/thumbler_small"
+                    android:layout_centerInParent="true" />
+
+                <SeekBar
+                    android:id="@+id/seekBarVinyet"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:progressDrawable="@drawable/progress_cyan"
+                    android:max="10"
+                    android:thumb="@drawable/thumbler_small"
+                    android:layout_centerInParent="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/layout_adjustButton">
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/brightnessButton"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/ic_brightness"
+                    android:scaleType="fitCenter"
+                    android:background="@color/colorTrans"
+                    android:padding="5dp" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/contrastButton"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/ic_contrast"
+                    android:scaleType="fitCenter"
+                    android:background="@color/colorTrans"
+                    android:padding="5dp"
+                    android:layout_toRightOf="@+id/brightnessButton" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/saturationButton"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/ic_saturation"
+                    android:scaleType="fitCenter"
+                    android:background="@color/colorTrans"
+                    android:padding="5dp"
+                    android:layout_toRightOf="@+id/contrastButton" />
+
+                <ImageButton
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/vinyetButton"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/ic_vinyet"
+                    android:scaleType="fitCenter"
+                    android:background="@color/colorTrans"
+                    android:padding="5dp"
+                    android:layout_toRightOf="@+id/saturationButton" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+</FrameLayout>
+

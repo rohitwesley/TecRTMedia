@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">TecRTMedia</string>
+
+    <!-- for Camera Activity -->
+    <string name="outputFileLabel_text">Output file:</string>
+    <string name="outputFile_text">[filename]</string>
+
+    <string name="toggleRecordingOn">Start recording</string>
+    <string name="toggleRecordingOff">Stop recording</string>
+
+    <string name="seekbar_brightness"> %+d </string>
+    <string name="seekbar_contrast"> %+d </string>
+    <string name="seekbar_saturation"> %+d </string>
+    <string name="seekbar_corner_radius"> %+d </string>
+
+    <!-- Preference keys -->
+    <string name="key_filter">key_filter</string>
+    <string name="key_brightness">key_brightness</string>
+    <string name="key_contrast">key_contrast</string>
+    <string name="key_saturation">key_saturation</string>
+    <string name="key_corner_radius">key_corner_radius</string>
+
+    <!-- Filter names -->
+    <string name="filter_none">None</string>
+    <string name="filter_bnw">Black &amp; White</string>
+    <string name="filter_Ansel">Ansel</string>
+    <string name="filter_Sepia">Sepia</string>
+    <string name="filter_Retro">Retro</string>
+    <string name="filter_Georgia">Georgia</string>
+    <string name="filter_Sahara">Sahara</string>
+    <string name="filter_Polaroid">Polaroid</string>
+    <string name="filter_Cartoon">Cartoon</string>
+    <string name="filter_Edges">Edges</string>
+
+    <string-array name="filters">
+        <item>None</item>
+        <item>Black &amp; White</item>
+        <item>Ansel</item>
+        <item>Sepia</item>
+        <item>Retro</item>
+        <item>Georgia</item>
+        <item>Sahara</item>
+        <item>Polaroid</item>
+        <item>Cartoon</item>
+        <item>Edges</item>
+    </string-array>
+
+</resources>

@@ -1,11 +1,12 @@
 package com.tecrt.rohitthomas.tecrtmediasample;
 
+
 import com.tecrt.rohitthomas.tecrtmedia.MediaActivity;
 
-public class CameraCaptureActivity extends MediaActivity {
+public class VideoEditActivity  extends MediaActivity {
 
-    CameraCaptureActivity(){
+    VideoEditActivity(){
         super();
-        toggleMode = false;
+        toggleMode = true;
     }
 }

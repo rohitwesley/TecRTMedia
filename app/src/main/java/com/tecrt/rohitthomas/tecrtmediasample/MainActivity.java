@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                     break;
                 case R.id.buttonMedia:
-                    i = new Intent(MainActivity.this, MediaActivity.class);
+                    i = new Intent(MainActivity.this, VideoEditActivity.class);
                     startActivity(i);
                     break;
             }

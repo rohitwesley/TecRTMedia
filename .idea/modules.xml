@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/TecRTMedia.iml" filepath="$PROJECT_DIR$/TecRTMedia.iml" />
       <module fileurl="file://$PROJECT_DIR$/TecRTMediaSample.iml" filepath="$PROJECT_DIR$/TecRTMediaSample.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tecrtmedia/tecrtmedia.iml" filepath="$PROJECT_DIR$/tecrtmedia/tecrtmedia.iml" />
     </modules>
   </component>
 </project>

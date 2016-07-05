@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     tools:context="com.tecrt.rohitthomas.tecrtmediasample.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:layout_centerInParent="true"
-        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -19,18 +13,50 @@
         android:gravity="center"
         android:layout_centerInParent="true">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonMedia"
-            android:src="@mipmap/ic_polygon"
-            android:background="@color/colorTransL" />
 
-        <ImageButton
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/buttonCam"
-            android:src="@mipmap/ic_polygon"
-            android:background="@color/colorAccent" />
+            android:gravity="center"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Video Editor"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonMedia"
+                android:src="@mipmap/ic_polygon"
+                android:background="@color/colorTransL" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera"
+                android:layout_centerInParent="true"
+                android:layout_alignParentTop="true" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonCam"
+                android:src="@mipmap/ic_polygon"
+                android:background="@color/colorAccent" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
