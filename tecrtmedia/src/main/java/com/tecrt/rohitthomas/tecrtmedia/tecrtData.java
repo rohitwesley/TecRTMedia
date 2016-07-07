@@ -15,8 +15,8 @@ public class tecrtData {
     // Predefined filter.
     public int mFilter = 0;
     //Check to launch intro
-    public boolean startIntro = true;
-    public int introsec = 0;
+    public boolean startIntro = false;
+    public int introsec = 2;
     //30 sec Clock
     public int time = 0;
 

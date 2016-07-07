@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TecRTMediaSample</string>
+    <string name="app_name">SplodeCamTest</string>
 
     <!-- for Camera Activity -->
     <string name="outputFileLabel_text">Output file:</string>
